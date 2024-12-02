@@ -28,14 +28,14 @@
 
 Назовите проект, например, "FinanceTracker".*/
 using CS02_12_24.Models;
-
+using System;
+using System.IO;
+using Newtonsoft.Json;
 
 
 internal class Program
 {
-    public static object JsonConvert { get; private set; }
-
-    private static void Main(string[] args)
+    public static void Main(string[] args)
     {
         string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
         List<Transaction> transactions = new List<Transaction>();
@@ -54,6 +54,7 @@ internal class Program
             Console.WriteLine("2.Check the balance");
             Console.WriteLine("3.History");
             Console.WriteLine("4.Exit");
+            Console.Write("Choose: ");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -63,7 +64,7 @@ internal class Program
                     break;
 
                 case "2":
-                    ShowBalance(transactions);
+                    GetBalance(transactions);
                     break;
 
                 case "3":
