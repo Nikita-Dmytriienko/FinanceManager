@@ -31,7 +31,7 @@
 
 
 string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
-using FinanceTracker.Models;
+using D:\Programmes\C# Project\CS02.12.24\CS02.12.24.sln.Models;
 
 
 class Main
