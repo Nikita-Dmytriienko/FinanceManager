@@ -27,18 +27,18 @@
 Создайте новый проект типа Console Application.
 
 Назовите проект, например, "FinanceTracker".*/
+using CS02_12_24.Models;
+using System;
 
 
-
-string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
-using D:\Programmes\C# Project\CS02.12.24\CS02.12.24.sln.Models;
-
-
-class Main
+internal class Program
 {
-    static void main(String[] args)
+    string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
+    private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        
+        
+
 
     }
 }
