@@ -29,6 +29,7 @@
 Назовите проект, например, "FinanceTracker".*/
 using CS02_12_24.Models;
 using System;
+using System.Transactions;
 
 
 internal class Program
@@ -36,9 +37,48 @@ internal class Program
     string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
     private static void Main(string[] args)
     {
-        
-        
 
+
+        File.WriteAllText("Data/data.json", JsonConvert.SerializeObject(transactions));
+        if (File.Exists("Data/data.json"))
+        {
+            transactions = JsonConvert.DeserializeObject<List<Transaction>>(File.ReadAllText("Data/data.json"));
+        }
+
+        while (true)
+        {
+            Console.WriteLine("1.Add operation");
+            Console.WriteLine("2.Check the balance");
+            Console.WriteLine("3.History");
+            Console.WriteLine("4.Exit");
+            string choice=Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+
+                    break;
+
+                    case "2":
+
+                        break;
+
+                    case "3":
+
+                    break;
+
+                    case "4":
+
+                    return;
+                 
+           
+            }
+
+
+
+
+
+        }
 
     }
 }
