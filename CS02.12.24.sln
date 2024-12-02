@@ -6,8 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS02.12.24", "CS02.12.24.csproj", "{4E49FA37-CA14-45B9-88B5-032409385A5A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{79B7E0AF-934B-4DCD-BEE0-409D5B81BADC}"
+	ProjectSection(SolutionItems) = preProject
+		FinanceManager.cs = FinanceManager.cs
+		Transaction.cs = Transaction.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5EBB06C0-FA16-4759-90AE-B119299D6DA2}"
+	ProjectSection(SolutionItems) = preProject
+		data.json = data.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

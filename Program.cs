@@ -1,5 +1,4 @@
-﻿
-/*1. Цели проекта
+﻿/*1. Цели проекта
 
 Создать консольное приложение на C# для ведения учёта личных финансов с возможностью добавления расходов/доходов и просмотра баланса.
 
@@ -29,39 +28,10 @@
 
 Назовите проект, например, "FinanceTracker".*/
 
-public class Transaction
-{
-    DateTime Date { get; set; }
-    decimal Amount { get; set; }
-    public string Type { get; set; }
-    string Description { get; set; }
 
 
-}
-
-public class FinanceManager
-{
-    public void AddTransaction(decimal amount, string type, string description)
-    {
-
-    }
-    decimal GetBalance()
-    {
-        return 
-    }
-
-        private void ShowHistory()
-    {
-
-    }
-
-
-}
-
-
-
-
-
+string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
+using FinanceTracker.Models;
 
 
 class Main
