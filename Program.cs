@@ -35,67 +35,47 @@ using Newtonsoft.Json;
 
 internal class Program
 {
-    public static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
-        List<Transaction> transactions = new List<Transaction>();
+        string dataPath = "Data/data.json";
+        FinanceManager financeManager = new FinanceManager(dataPath);
 
-        if (File.Exists(dataPath))
-        {
-            transactions = JsonConvert.DeserializeObject<List<Transaction>>(File.ReadAllText(dataPath));
-        }
-        else
-        {
-            Console.WriteLine("Файл данных не найден. Будет создан новый файл при сохранении.");
-        }
         while (true)
         {
             Console.WriteLine("1.Add operation");
             Console.WriteLine("2.Check the balance");
             Console.WriteLine("3.History");
-            Console.WriteLine("4.Exit");
+            Console.WriteLine("4.Save & Exit");
             Console.Write("Choose: ");
             string choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
-                    AddTransaction(transactions);
+                    financeManager.AddTransaction();
                     break;
 
                 case "2":
-                    GetBalance(transactions);
+                    financeManager.ShowBalance();
                     break;
 
                 case "3":
-                    ShowHistory(transactions);
+                    financeManager.ShowHistory();
                     break;
 
                 case "4":
-                    File.WriteAllText(dataPath, JsonConvert.SerializeObject(transactions));
-                    Console.WriteLine("Данные успешно сохранены.");
+                    financeManager.SaveTransactions();
+                    Console.WriteLine("Выход из программы.");
                     return;
                 default:
                     Console.WriteLine("Некорректный выбор. Попробуйте снова.");
                     break;
-
-
             }
-            transactions.Add(new Transaction
-            {
-                Date = DateTime.Now,
-                Amount = 100,
-                Type = "Доход",
-                Description = "Зарплата"
-            });
-
-
-
-
         }
-
     }
 }
+
+
 
 
 

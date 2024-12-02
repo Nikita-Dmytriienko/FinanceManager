@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Newtonsoft.Json;
 
 
@@ -16,6 +15,7 @@ namespace CS02_12_24.Models
         {
             _dataPath = dataPath;
 
+            //launch 
             if (File.Exists(_dataPath))
             {
                 string json = File.ReadAllText(_dataPath);
@@ -23,37 +23,49 @@ namespace CS02_12_24.Models
             }
         }
 
-        public void AddTransaction(List<Transaction> transactions)
+        public void AddTransaction()
         {
             Console.Write("Enter amount: ");
-            decimal amount = decimal.Parse(Console.ReadLine());
+            decimal amount = Convert.ToDecimal(Console.ReadLine());
 
             Console.Write("Type of operation (income/expenses): ");
             string type = Console.ReadLine();
 
             Console.Write("Descryption of operation: ");
             string description = Console.ReadLine();
-            transactions.Add(new Transaction
+
+            _transactions.Add(new Transaction
             {
                 Date = DateTime.Now,
                 Amount = amount,
                 Type = type,
                 Description = description
             });
-            Console.WriteLine("Operation Successful.");
+            Console.WriteLine("Operation Added.");
         }
-        private static void ShowBalance(List<Transaction> transactions)
+
+        public void ShowBalance()
         {
-            decimal balance = transactions.Sum(t => t.Type.ToLower() == "income" ? t.Amount : -t.Amount);
-            Console.WriteLine($"Current balance: {balance}");
+            decimal balance = 0;
+            foreach (var t in _transactions)
+            {
+                balance += t.Type.ToLower() == "income" ? t.Amount : -t.Amount;
+            }
+            Console.WriteLine($"Balance: {balance}");
         }
-        private static void ShowHistory(List<Transaction> transactions)
+
+        public void ShowHistory()
         {
-            Console.WriteLine("History of operations:");
-            foreach (var t in transactions)
+            Console.WriteLine("History:");
+            foreach (var t in _transactions)
             {
                 Console.WriteLine($"{t.Date}: {t.Type} - {t.Amount} ({t.Description})");
             }
+        }
+        public void SaveTransactions()
+        {
+            File.WriteAllText(_dataPath, JsonConvert.SerializeObject(_transactions));
+            Console.WriteLine("Data saved.");
         }
 
     }
