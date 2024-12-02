@@ -33,8 +33,8 @@ public class Transaction
 {
     DateTime Date;
     decimal Amount;
-    string Type
-
+    string Type income, expenses;
+    string Description
 
 
 
@@ -42,9 +42,19 @@ public class Transaction
 
 public class FinanceManager
 {
+    public void AddTransaction(decimal amount, string type, string description)
+    {
 
+    }
+    decimal GetBalance()
+    {
+        return 
+    }
 
+        private void ShowHistory()
+    {
 
+    }
 
 
 }
