@@ -28,52 +28,65 @@
 
 Назовите проект, например, "FinanceTracker".*/
 using CS02_12_24.Models;
-using System;
-using System.Transactions;
+
 
 
 internal class Program
 {
-    string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
+    public static object JsonConvert { get; private set; }
+
     private static void Main(string[] args)
     {
+        string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
+        List<Transaction> transactions = new List<Transaction>();
 
-
-        File.WriteAllText("Data/data.json", JsonConvert.SerializeObject(transactions));
-        if (File.Exists("Data/data.json"))
+        if (File.Exists(dataPath))
         {
-            transactions = JsonConvert.DeserializeObject<List<Transaction>>(File.ReadAllText("Data/data.json"));
+            transactions = JsonConvert.DeserializeObject<List<Transaction>>(File.ReadAllText(dataPath));
         }
-
+        else
+        {
+            Console.WriteLine("Файл данных не найден. Будет создан новый файл при сохранении.");
+        }
         while (true)
         {
             Console.WriteLine("1.Add operation");
             Console.WriteLine("2.Check the balance");
             Console.WriteLine("3.History");
             Console.WriteLine("4.Exit");
-            string choice=Console.ReadLine();
+            string choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
-
+                    AddTransaction(transactions);
                     break;
 
-                    case "2":
-
-                        break;
-
-                    case "3":
-
+                case "2":
+                    ShowBalance(transactions);
                     break;
 
-                    case "4":
+                case "3":
+                    ShowHistory(transactions);
+                    break;
 
+                case "4":
+                    File.WriteAllText(dataPath, JsonConvert.SerializeObject(transactions));
+                    Console.WriteLine("Данные успешно сохранены.");
                     return;
-                 
-           
-            }
+                default:
+                    Console.WriteLine("Некорректный выбор. Попробуйте снова.");
+                    break;
 
+
+            }
+            transactions.Add(new Transaction
+            {
+                Date = DateTime.Now,
+                Amount = 100,
+                Type = "Доход",
+                Description = "Зарплата"
+            });
 
 
 

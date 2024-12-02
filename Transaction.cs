@@ -1,22 +1,15 @@
 ﻿using System;
 
+
 namespace CS02_12_24.Models
 {
-    public class FinanceManager
+    public class Transaction
     {
-        private List<Transaction> transactions = new List<Transaction>();
-
-        public void AddTransaction(decimal amount, string type, string description)
-        {
-            transactions.Add(new Transaction
-            {
-                Date = DateTime.Now,
-                Amount = amount,
-                Type = type,
-                Description = description
-            });
-        }
-
+        public DateTime Date { get; set; }
+        public decimal Amount { get; set; }
+        public string Type { get; set; } // "Доход" или "Расход"
+        public string Description { get; set; }
     }
+
 }
 
