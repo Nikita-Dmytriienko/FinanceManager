@@ -4,7 +4,7 @@
     {
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
-        public string Type { get; set; } // "income" or "expenses"
-        public string Description { get; set; }
+        public required string Type { get; set; } // "income" or "expenses"
+        public required string Description { get; set; }
     }
 }

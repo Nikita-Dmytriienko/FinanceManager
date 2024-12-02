@@ -9,7 +9,7 @@ namespace CS02_12_24.Models
     public class FinanceManager
     {
         private string _dataPath;
-        private List<Transaction> _transactions = new List<Transaction>();
+        private List<Transaction> _transactions = [];
 
         public FinanceManager(string dataPath)
         {
@@ -49,7 +49,7 @@ namespace CS02_12_24.Models
             decimal balance = 0;
             foreach (var t in _transactions)
             {
-                balance += t.Type.ToLower() == "income" ? t.Amount : -t.Amount;
+                balance += t.Type.Equals("income", StringComparison.CurrentCultureIgnoreCase) ? t.Amount : -t.Amount;
             }
             Console.WriteLine($"Balance: {balance}");
         }
@@ -62,12 +62,13 @@ namespace CS02_12_24.Models
                 Console.WriteLine($"{t.Date}: {t.Type} - {t.Amount} ({t.Description})");
             }
         }
+
         public void SaveTransactions()
         {
+            Directory.CreateDirectory(Path.GetDirectoryName(_dataPath));
             File.WriteAllText(_dataPath, JsonConvert.SerializeObject(_transactions));
             Console.WriteLine("Data saved.");
         }
-
     }
 }
 

@@ -65,10 +65,10 @@ internal class Program
 
                 case "4":
                     financeManager.SaveTransactions();
-                    Console.WriteLine("Выход из программы.");
+                    Console.WriteLine("Exit.");
                     return;
                 default:
-                    Console.WriteLine("Некорректный выбор. Попробуйте снова.");
+                    Console.WriteLine("TRY AGAIN.");
                     break;
             }
         }
