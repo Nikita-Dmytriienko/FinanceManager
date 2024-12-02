@@ -9,7 +9,19 @@ namespace CS02_12_24.Models
 {
     public class FinanceManager
     {
-        private List<Transaction> transactions = new List<Transaction>();
+        private string _dataPath;
+        private List<Transaction> _transactions = new List<Transaction>();
+
+        public FinanceManager(string dataPath)
+        {
+            _dataPath = dataPath;
+
+            if (File.Exists(_dataPath))
+            {
+                string json = File.ReadAllText(_dataPath);
+                _transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+            }
+        }
 
         public void AddTransaction(List<Transaction> transactions)
         {
@@ -28,6 +40,7 @@ namespace CS02_12_24.Models
                 Type = type,
                 Description = description
             });
+            Console.WriteLine("Operation Successful.");
         }
         private static void ShowBalance(List<Transaction> transactions)
         {
