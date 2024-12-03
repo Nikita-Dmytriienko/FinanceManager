@@ -1,8 +1,10 @@
-public class Transaction
+﻿namespace CS02_12_24.Models
 {
-    DateTime Date { get; set; }
-    decimal Amount { get; set; }
-    public string Type { get; set; }
-    string Description { get; set; }
-
+    public class Transaction
+    {
+        public DateTime Date { get; set; }
+        public decimal Amount { get; set; }
+        public required string Type { get; set; } // "income" or "expenses"
+        public required string Description { get; set; }
+    }
 }

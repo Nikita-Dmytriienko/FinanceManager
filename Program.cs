@@ -27,21 +27,21 @@
 Создайте новый проект типа Console Application.
 
 Назовите проект, например, "FinanceTracker".*/
+using CS02_12_24.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
-
-
-string dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "data.json");
-using FinanceTracker.Models;
-
-
-class Main
+internal class Program
 {
-    static void main(String[] args)
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
-
+        RunProgram.Run();
     }
 }
+
+
 
 
 
