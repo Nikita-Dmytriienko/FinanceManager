@@ -52,22 +52,34 @@ internal class Program
             switch (choice)
             {
                 case "1":
-                    financeManager.AddTransaction();
-                    break;
+                    {
+                        financeManager.AddTransaction();
+                        break;
+                    }
 
                 case "2":
-                    financeManager.ShowBalance();
-                    break;
+                    {
+                        financeManager.ShowBalance();
+                        break;
+                    }
 
                 case "3":
-                    financeManager.ShowHistory();
-                    break;
-
+                    {
+                        financeManager.ShowHistory();
+                        break;
+                    }
                 case "4":
-                    financeManager.SaveTransactions();
-                    Console.WriteLine("Exit.");
-                    return;
-                default:
+                    {
+                        financeManager.SaveTransactions();
+                        Console.WriteLine("Exit.");
+                        return;
+                    }
+                    case "5":
+                    {
+                        financeManager.ClearHistory();
+                        break;
+                    }
+                        default:
                     Console.WriteLine("TRY AGAIN.");
                     break;
             }

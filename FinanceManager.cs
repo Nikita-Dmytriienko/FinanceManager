@@ -69,6 +69,10 @@ namespace CS02_12_24.Models
             File.WriteAllText(_dataPath, JsonConvert.SerializeObject(_transactions));
             Console.WriteLine("Data saved.");
         }
+        public void ClearHistory()
+        {
+
+        }
     }
 }
 
