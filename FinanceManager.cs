@@ -18,13 +18,13 @@ namespace CS02_12_24.Models
                 if (File.Exists(_dataPath))
                 {
                     string json = File.ReadAllText(_dataPath);
-                    _transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+                    _transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? [];
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error reading data: {ex.Message}");
-                _transactions = new List<Transaction>();
+                _transactions = [];
             }
         }
 
