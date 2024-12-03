@@ -3,9 +3,9 @@ internal class Program
 {
     public static void Main()
     {
+        Console.ReadKey();
         RunProgram.Run();
         Console.WriteLine("Press any key to exit...");
-        Console.ReadKey();
         Console.ReadLine();
     }
 }
