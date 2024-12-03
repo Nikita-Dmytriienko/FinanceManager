@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="artworks-000659768701-tbs81p-t500x500.ico" />
+    <Content Include="image.ico" />
   </ItemGroup>
 
   <ItemGroup>
