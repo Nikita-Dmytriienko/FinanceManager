@@ -8,18 +8,26 @@ namespace CS02_12_24.Models
 {
     public class FinanceManager
     {
-        private string _dataPath;
-        private List<Transaction> _transactions = [];
+        private readonly string _dataPath;
+        private readonly List<Transaction> _transactions = [];
 
         public FinanceManager(string dataPath)
         {
             _dataPath = dataPath;
 
             //launch 
-            if (File.Exists(_dataPath))
+            try
             {
-                string json = File.ReadAllText(_dataPath);
-                _transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+                if (File.Exists(_dataPath))
+                {
+                    string json = File.ReadAllText(_dataPath);
+                    _transactions = JsonConvert.DeserializeObject<List<Transaction>>(json) ?? new List<Transaction>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading data: {ex.Message}");
+                _transactions = new List<Transaction>();
             }
         }
 
@@ -71,7 +79,9 @@ namespace CS02_12_24.Models
         }
         public void ClearHistory()
         {
-
+            _transactions.Clear();
+            Console.WriteLine("Transaction history cleared.");
+            SaveTransactions();
         }
     }
 }
