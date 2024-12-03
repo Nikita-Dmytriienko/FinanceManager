@@ -6,6 +6,7 @@ internal class Program
         RunProgram.Run();
         Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
+        Console.ReadLine();
     }
 }
 
