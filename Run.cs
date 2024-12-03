@@ -53,6 +53,7 @@
                         Console.WriteLine("TRY AGAIN.");
                         break;
                 }
+                Console.ReadLine();
             }
         }
     }
