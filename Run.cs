@@ -1,5 +1,4 @@
-﻿using System;
-namespace CS02_12_24.Models
+﻿namespace CS02_12_24.Models
 {
     public class RunProgram()
     {
@@ -45,7 +44,7 @@ namespace CS02_12_24.Models
                         }
                     case "5":
                         {
-                            
+
                             financeManager.SaveTransactions();
                             Console.WriteLine("Exit.");
                             return;
